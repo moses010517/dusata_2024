@@ -18,7 +18,7 @@ const SurveyLogin = () => {
 
   return (
     <div className="survey-login">
-      <div className="survey-login-background" style={{ backgroundImage: `url(/images/설문시작&로그인_1.png)` }} />
+      <div className="survey-login-background" style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/images/설문시작&로그인_1.png)` }} />
       <div className="phone-input-container">
         <span>+82</span>
         <input
