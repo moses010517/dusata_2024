@@ -1,10 +1,12 @@
 // src/components/SurveyLogin.js
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './SurveyLogin.css';
 
 const SurveyLogin = () => {
   const [phone, setPhone] = useState('');
   const [code, setCode] = useState('');
+  const navigate = useNavigate();
 
   const handleSendCode = () => {
     // 인증번호 전송 로직
@@ -14,6 +16,7 @@ const SurveyLogin = () => {
   const handleVerifyCode = () => {
     // 인증번호 확인 로직
     alert('인증번호가 확인되었습니다.');
+    navigate('/survey-name');
   };
 
   return (
