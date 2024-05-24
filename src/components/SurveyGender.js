@@ -14,6 +14,11 @@ const SurveyGender = () => {
   const handleGenderClick = (gender) => {
     setSelectedGender(gender);
   };
+  const handleNextClick = () => {
+    navigate('/survey-interest');
+  };
+
+
 
   return (
     <div className="survey-gender">
@@ -49,7 +54,7 @@ const SurveyGender = () => {
           />
         </div>
       </div>
-      <button className="next-button">다음으로</button>
+      <button className="next-button" onClick={handleNextClick}>다음으로</button>
     </div>
   );
 };

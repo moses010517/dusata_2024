@@ -1,4 +1,3 @@
-// src/components/SurveyStudentInfo.js
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './SurveyStudentInfo.css';
@@ -7,7 +6,7 @@ const SurveyStudentInfo = () => {
   const navigate = useNavigate();
 
   const handleNextClick = () => {
-    navigate('/survey-gender');
+    navigate('/survey-interest');
   };
 
   const handleBackClick = () => {
