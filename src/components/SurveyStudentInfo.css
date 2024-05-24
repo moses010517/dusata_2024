@@ -25,7 +25,7 @@
   border-radius: 50px;
 }
 
-.progress {
+.survey-studentinfo .progress {
   position: absolute;
   width: 60px;
   height: 8px;
@@ -50,20 +50,32 @@ h1 {
   color: #000000;
 }
 
-.input-container {
-  position: relative; /* Updated to relative */
+.survey-studentinfo .input-container {
+  position: relative;
   width: 325px;
   height: 56px;
-  margin: 20px auto; /* Centered with margin */
+  margin: 0px auto;
+  background: #FFFFFF;
+  border: 1px solid #FFB933;
+  border-radius: 50px;
+  left: 0px; /* 왼쪽으로 20px 이동 */
+}
+
+/*
+.input-container {
+  left: calc(50% - 325px/2);
+  top: 259px;
   background: #FFFFFF;
   border: 1px solid #FFB933;
   border-radius: 50px;
 }
-
-.survey-studentinfo.input-container input {
+*/
+.survey-studentinfo .input-container input {
+  position: absolute;
   width: calc(100% - 60px);
   height: 20px;
-  margin: 18px 30px;
+  left: 30px;
+  top: 18px;
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
@@ -73,13 +85,30 @@ h1 {
   border: none;
   outline: none;
 }
+/*
+  .input-container input {
+    position: absolute;
+    width: calc(100% - 60px);
+    height: 20px;
+    left: 30px;
+    top: 18px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 20px;
+    color: #000000;
+    border: none;
+    outline: none;
+  }
+*/
 
-.input-container:first-of-type {
-  top: 259px;
+.survey-studentinfo .input-container:first-of-type {
+  margin-top: 259px;
 }
 
-.input-container:last-of-type {
-  top: 335px; /* 첫번째 입력 필드 아래에 위치 */
+.survey-studentinfo .input-container:last-of-type {
+  margin-top: 20px; /* 첫번째 입력 필드 아래에 위치 */
 }
 
 p {
