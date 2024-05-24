@@ -9,9 +9,12 @@ const SurveySmoking = () => {
 
   const handleNextClick = () => {
     if (selectedOption) {
-      navigate('/next-survey-page'); // 다음 페이지 경로로 변경
+      navigate('/survey-face'); // 다음 페이지 경로로 변경
+    } else {
+      alert('흡연여부를 선택해주세요');
     }
   };
+  
 
   const handleOptionClick = (option) => {
     setSelectedOption(option);

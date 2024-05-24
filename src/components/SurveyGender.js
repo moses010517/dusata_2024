@@ -15,7 +15,11 @@ const SurveyGender = () => {
     setSelectedGender(gender);
   };
   const handleNextClick = () => {
-    navigate('/survey-interest');
+    if (selectedGender) {
+      navigate('/survey-interest'); // 다음 페이지 경로로 변경
+    } else {
+      alert('성별을 선택해주세요');
+    }
   };
 
 

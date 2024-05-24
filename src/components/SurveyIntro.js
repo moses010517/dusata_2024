@@ -1,12 +1,12 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './SurveyStudentInfo.css';
+import './SurveyIntro.css';
 
-const SurveyStudentInfo = () => {
+const SurveyIntro = () => {
   const navigate = useNavigate();
 
   const handleNextClick = () => {
-    navigate('/survey-gender');
+    navigate('/survey-nextpage');
   };
 
   const handleBackClick = () => {
@@ -14,7 +14,7 @@ const SurveyStudentInfo = () => {
   };
 
   return (
-    <div className="survey-studentinfo">
+    <div className="survey-intro">
       <img 
         src={`${process.env.PUBLIC_URL}/images/arrow.png`} 
         alt="back" 
@@ -24,17 +24,14 @@ const SurveyStudentInfo = () => {
       <div className="progress-bar">
         <div className="progress" />
       </div>
-      <h1>Q. 학과와 학번을 알려주세요</h1>
+      <h1>Q. 간단한 자기소개</h1>
       <div className="input-container">
-        <input type="text" placeholder="학과입력" />
+        <textarea placeholder="자기소개 입력 (50자 이내로 간단히)" />
       </div>
-      <div className="input-container">
-        <input type="text" placeholder="학번입력" />
-      </div>
-      <p>학과와 학번을 정확하게 기입해주세요</p>
+      <p>간단한 자기소개를 해주세요. 성격, 가치관, 외모, 장점 등을 써주시면 좋아요</p>
       <button className="next-button" onClick={handleNextClick}>다음으로</button>
     </div>
   );
 };
 
-export default SurveyStudentInfo;
+export default SurveyIntro;

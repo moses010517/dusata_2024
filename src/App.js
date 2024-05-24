@@ -10,6 +10,8 @@ import SurveyGender from './components/SurveyGender';
 import SurveyInterest from './components/SurveyInterest';
 import SurveyMBTI from './components/SurveyMBTI';
 import SurveySmoking from './components/SurveySmoking';
+import SurveyFace from './components/SurveyFace';
+import SurveyIntro from './components/SurveyIntro';
 
 const App = () => {
   return (
@@ -25,6 +27,8 @@ const App = () => {
         <Route path="/survey-interest" element={<SurveyInterest />} />
         <Route path="/survey-mbti" element={<SurveyMBTI />} />
         <Route path="/survey-smoking" element={<SurveySmoking />} />
+        <Route path="/survey-face" element={<SurveyFace />} />
+        <Route path="/survey-intro" element={<SurveyIntro />} />
       </Routes>
     </Router>
   );

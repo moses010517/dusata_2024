@@ -1,5 +1,5 @@
-/* src/components/SurveyInterest.css */
-.survey-interest {
+/* src/components/SurveyIntro.css */
+.survey-intro {
     position: relative;
     width: 375px;
     height: 812px;
@@ -8,8 +8,8 @@
   
   .back-arrow {
     position: absolute;
-    width: 12px;
-    height: 12px;
+    width: 12px; /* 크기를 줄임 */
+    height: 12px; /* 크기를 줄임 */
     left: 20px;
     top: 62px;
     cursor: pointer;
@@ -25,11 +25,11 @@
     border-radius: 50px;
   }
   
-  .survey-interest .progress {
+  .survey-intro .progress {
     position: absolute;
-    width: 100px;
+    width: 180px;
     height: 8px;
-    left: calc(50% - 80px/2 - 50.5px);
+    left: calc(50% - 100px/2 - 40.5px);
     top: 0;
     background: #FFB933;
     border-radius: 50px;
@@ -39,7 +39,7 @@
     position: absolute;
     width: 313px;
     height: 42px;
-    left: calc(50% - 313px/2 + 13px);
+    left: calc(50% - 313px/2);
     top: 116px;
     font-family: 'Ownglyph meetme';
     font-style: normal;
@@ -50,39 +50,38 @@
     color: #000000;
   }
   
-  .interests-container {
+  .survey-intro .input-container {
     position: absolute;
     width: 325px;
+    height: 120px;
     left: calc(50% - 325px/2);
-    top: 232px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    top: 259px;
+    background: #FFFFFF;
+    border: 1px solid #FFB933;
+    border-radius: 25px;
   }
   
-  .interest-option {
-    width: 143px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50px;
-    cursor: pointer;
-    margin-bottom: 12px;
+  .survey-intro .input-container textarea {
+    width: calc(100% - 40px);
+    height: calc(100% - 40px);
+    margin: 20px;
+    border: none;
+    outline: none;
+    resize: none;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 20px;
+    color: #000000;
   }
   
-  .interest-icon {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-  
-  p {
+  .survey-intro p {
     position: absolute;
     width: 315px;
     height: 20px;
     left: calc(50% - 315px/2);
-    top: 559px;
+    top: 420px;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;

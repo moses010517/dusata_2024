@@ -27,7 +27,7 @@
   
   .survey-smoking .progress {
     position: absolute;
-    width: 100px;
+    width: 140px;
     height: 8px;
     left: calc(50% - 100px/2 - 40.5px);
     top: 0;
