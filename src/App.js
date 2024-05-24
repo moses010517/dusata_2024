@@ -8,6 +8,8 @@ import SurveyKakaoID from './components/SurveyKakaoID';
 import SurveyStudentInfo from './components/SurveyStudentInfo';
 import SurveyGender from './components/SurveyGender';
 import SurveyInterest from './components/SurveyInterest';
+import SurveyMBTI from './components/SurveyMBTI';
+import SurveySmoking from './components/SurveySmoking';
 
 const App = () => {
   return (
@@ -21,6 +23,8 @@ const App = () => {
         <Route path="/survey-studentinfo" element={<SurveyStudentInfo />} />
         <Route path="/survey-gender" element={<SurveyGender />} />
         <Route path="/survey-interest" element={<SurveyInterest />} />
+        <Route path="/survey-mbti" element={<SurveyMBTI />} />
+        <Route path="/survey-smoking" element={<SurveySmoking />} />
       </Routes>
     </Router>
   );
