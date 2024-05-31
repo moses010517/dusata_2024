@@ -1,0 +1,76 @@
+.match-detail-screen {
+    position: relative;
+    width: 375px;
+    height: 812px;
+    background: #FFFFFF;
+  }
+  
+  .back-arrow {
+    position: absolute;
+    width: 12px; /* 크기를 줄임 */
+    height: 12px; /* 크기를 줄임 */
+    left: 20px;
+    top: 62px;
+    cursor: pointer;
+  }
+  
+  .match-monkey {
+    position: absolute;
+    width: 152px;
+    height: 152px;
+    left: 115px;
+    top: 32px;
+  }
+  
+  .memo {
+    position: absolute;
+    width: 342px;
+    height: 291px;
+    left: 19px;
+    top: 240px;
+    background-size: cover;
+    z-index: 1;
+  }
+  
+  .memo-text {
+    position: absolute;
+    width: 300px;
+    height: 200px;
+    left: 21px;
+    top: 20px;
+    font-family: 'Ownglyph meetme';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 29px;
+    text-align: center;
+    letter-spacing: -0.3px;
+    color: #000000;
+    z-index: 2;
+  }
+  
+  .next-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 17px 30px;
+    gap: 10px;
+    position: absolute;
+    width: 325px;
+    height: 56px;
+    left: calc(50% - 325px/2 + 3px);
+    top: 664px;
+    background: #FFB933;
+    border-radius: 50px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    color: #FFFFFF;
+    border: none;
+    cursor: pointer;
+  }
+  

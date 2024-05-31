@@ -6,7 +6,7 @@ const SurveyIntro = () => {
   const navigate = useNavigate();
 
   const handleNextClick = () => {
-    navigate('/survey-nextpage');
+    navigate('/match-screen');
   };
 
   const handleBackClick = () => {

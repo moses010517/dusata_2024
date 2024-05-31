@@ -1,22 +1,54 @@
-// src/components/SurveyLogin.js
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { SurveyContext } from './SurveyContext';
 import './SurveyLogin.css';
 
 const SurveyLogin = () => {
   const [phone, setPhone] = useState('');
   const [code, setCode] = useState('');
+  const { setSurveyData } = useContext(SurveyContext);
   const navigate = useNavigate();
 
-  const handleSendCode = () => {
-    // 인증번호 전송 로직
-    alert('인증번호가 전송되었습니다.');
+  const handleSendCode = async () => {
+    try {
+      const response = await fetch('http://127.0.0.1:8000/auth/phone', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ phone_number: phone }), // phone_number로 변경
+      });
+
+      if (response.ok) {
+        alert('인증번호가 전송되었습니다.');
+      } else {
+        alert('인증번호 전송에 실패했습니다.');
+      }
+    } catch (error) {
+      alert('인증번호 전송 중 오류가 발생했습니다.');
+    }
   };
 
-  const handleVerifyCode = () => {
-    // 인증번호 확인 로직
-    alert('인증번호가 확인되었습니다.');
-    navigate('/survey-name');
+  const handleVerifyCode = async () => {
+    try {
+      const response = await fetch('http://127.0.0.1:8000/auth/phone-check', { // 변경된 백엔드 주소로 설정
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ phone_number: phone, verification_code: code }), // phone_number와 verification_code로 변경
+      });
+
+      if (response.ok) {
+        alert('인증번호가 확인되었습니다.');
+        setSurveyData(prev => ({ ...prev, phone }));
+        navigate('/survey-name');
+      } else {
+        alert('인증번호 확인에 실패했습니다.');
+      }
+    } catch (error) {
+      alert('인증번호 확인 중 오류가 발생했습니다.');
+    }
   };
 
   return (

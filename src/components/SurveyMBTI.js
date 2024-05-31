@@ -29,7 +29,7 @@ const SurveyMbti = () => {
       <div className="input-container">
         <input type="text" placeholder="mbti 입력" />
       </div>
-      <p className="warning-text">영문자 소문자로 4글자만 입력해주세요<br/>ex) entp, intj, intp 등</p>
+      <p className="warning-text">영문자 대문자로 4글자만 입력해주세요<br/>ex) ENTP, INTJ, INTP 등</p>
       <button className="next-button" onClick={handleNextClick}>다음으로</button>
     </div>
   );
