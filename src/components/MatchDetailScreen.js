@@ -22,13 +22,14 @@ const MatchDetailScreen = () => {
         alt="monkey" 
         className="match-monkey" 
       />
-      <div className="memo" style={{
-        backgroundImage: `url(${process.env.PUBLIC_URL}/images/match/match_bigpaper.png})`,
-      }}>
-        <div className="memo-text">
-          안녕하세요 제이름은....<br />
-          취미는.... 좋은 기회가 아니면 12345???? 되었으면 좋겠습니다!
-        </div>
+      <img 
+        src={`${process.env.PUBLIC_URL}/images/match/match_bigpaper.png`} 
+        alt="big paper" 
+        className="memo"
+      />
+      <div className="memo-text">
+        안녕하세요 제이름은....<br />
+        취미는.... 좋은 기회가 아니면 12345???? 되었으면 좋겠습니다!
       </div>
       <button className="next-button">매칭하기</button>
     </div>

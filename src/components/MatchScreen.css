@@ -25,6 +25,7 @@
     width: 160px;
     height: 160px;
     margin-bottom: 20px;
+    cursor: pointer;
 }
 
 .match-paper {
