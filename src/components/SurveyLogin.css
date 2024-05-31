@@ -17,31 +17,31 @@
 
 .phone-input-container {
   position: absolute;
-  width: 325px;
+  width: 300px;
   height: 56px;
-  left: calc(50% - 162.5px);
+  left: calc(50% - 320px/2);
   top: 247px;
   background: #FFFFFF;
   border: 3px solid #FFB431;
   border-radius: 50px;
   display: flex;
   align-items: center;
-  padding: 0 16px;
+  padding: 0 10px;
 }
 
 .phone-input-container span {
   font-family: 'Inter';
   font-size: 14px;
-  color: #000000;
+  color: #a5a5a5;
 }
 
 .phone-input-container input {
-  width: 100%;
+  width: 90%;
   border: none;
   outline: none;
   font-family: 'Inter';
   font-size: 15px;
-  color: #888888;
+  color: #000000;
 }
 
 .send-code-button {
@@ -65,18 +65,18 @@
 
 .code-input-container {
   position: absolute;
-  width: 325px;
+  width: 300px;
   height: 56px;
-  left: calc(50% - 162.5px);
+  left: calc(50% - 320px/2);
   top: 503px;
   background: #FFFFFF;
   border: 1px solid #FFB933;
   display: flex;
   align-items: center;
-  padding: 0 16px;
+  padding: 0 10px;
 }
 
-.code-input-container input {
+.survey-login .code-input-container input {
   width: 100%;
   border: none;
   outline: none;
@@ -85,7 +85,7 @@
   color: #000000;
 }
 
-.verify-code-button {
+.survey-login .verify-code-button {
   position: absolute;
   width: 182px;
   height: 52px;

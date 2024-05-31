@@ -1,6 +1,6 @@
-// src/components/SurveyInterest.js
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { SurveyContext } from './SurveyContext';
 import './SurveyInterest.css';
 
 const interests = [
@@ -21,6 +21,7 @@ const interests = [
 const SurveyInterest = () => {
   const [selectedInterests, setSelectedInterests] = useState([]);
   const navigate = useNavigate();
+  const { surveyData, setSurveyData } = useContext(SurveyContext);
 
   const handleBackClick = () => {
     navigate(-1);
@@ -35,7 +36,12 @@ const SurveyInterest = () => {
   };
 
   const handleNextClick = () => {
-    navigate('/survey-mbti');
+    if (selectedInterests.length === 0) {
+      alert('관심사를 최소 하나 선택해주세요.');
+    } else {
+      setSurveyData({ ...surveyData, interests: selectedInterests });
+      navigate('/survey-mbti');
+    }
   };
 
   return (

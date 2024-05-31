@@ -1,11 +1,12 @@
-// src/components/SurveyGender.js
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { SurveyContext } from './SurveyContext';
 import './SurveyGender.css';
 
 const SurveyGender = () => {
   const [selectedGender, setSelectedGender] = useState(null);
   const navigate = useNavigate();
+  const { surveyData, setSurveyData } = useContext(SurveyContext);
 
   const handleBackClick = () => {
     navigate(-1);
@@ -14,15 +15,15 @@ const SurveyGender = () => {
   const handleGenderClick = (gender) => {
     setSelectedGender(gender);
   };
+
   const handleNextClick = () => {
     if (selectedGender) {
-      navigate('/survey-interest'); // 다음 페이지 경로로 변경
+      setSurveyData({ ...surveyData, gender: selectedGender });
+      navigate('/survey-interest');
     } else {
       alert('성별을 선택해주세요');
     }
   };
-
-
 
   return (
     <div className="survey-gender">
@@ -38,7 +39,7 @@ const SurveyGender = () => {
       <h1>Q. 성별을 알려주세요</h1>
       <div className="gender-container">
         <div
-          className="gender-option"
+          className={`gender-option ${selectedGender === 'male' ? 'selected' : ''}`}
           onClick={() => handleGenderClick('male')}
         >
           <img
@@ -48,7 +49,7 @@ const SurveyGender = () => {
           />
         </div>
         <div
-          className="gender-option"
+          className={`gender-option ${selectedGender === 'female' ? 'selected' : ''}`}
           onClick={() => handleGenderClick('female')}
         >
           <img
