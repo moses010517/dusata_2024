@@ -1,24 +1,23 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { SurveyContext } from './SurveyContext';
 import './SurveyFace.css';
 
 const faceImages = [
-  { id: 1, src: 'f1', selected: false },
-  { id: 2, src: 'f2', selected: false },
-  { id: 3, src: 'f3', selected: false },
-  { id: 4, src: 'f4', selected: false },
-  { id: 5, src: 'f5', selected: false },
-  { id: 6, src: 'f6', selected: false },
-  { id: 7, src: 'f7', selected: false },
-  { id: 8, src: 'f8', selected: false },
-  { id: 9, src: 'f9', selected: false },
-  { id: 10, src: 'f10', selected: false },
-  { id: 11, src: 'f11', selected: false }
+  { id: 1, src: 'f1', label: '강아지상', selected: false },
+  { id: 2, src: 'f2', label: '고양이상', selected: false },
+  { id: 3, src: 'f3', label: '부엉이상', selected: false },
+  { id: 4, src: 'f4', label: '사자상', selected: false },
+  { id: 5, src: 'f5', label: '호랑이상', selected: false },
+  { id: 6, src: 'f6', label: '곰상', selected: false },
+  { id: 7, src: 'f7', label: '토끼상', selected: false },
+  { id: 8, src: 'f8', label: '늑대상', selected: false }
 ];
 
 const SurveyFace = () => {
   const [faces, setFaces] = useState(faceImages);
   const navigate = useNavigate();
+  const { surveyData, setSurveyData } = useContext(SurveyContext);
 
   const handleFaceClick = (id) => {
     const updatedFaces = faces.map(face =>
@@ -30,7 +29,8 @@ const SurveyFace = () => {
   const handleNextClick = () => {
     const selectedFace = faces.find(face => face.selected);
     if (selectedFace) {
-      navigate('/survey-intro'); // 다음 페이지 경로로 변경
+      setSurveyData({ ...surveyData, animal: selectedFace.label });
+      navigate('/survey-intro');
     } else {
       alert('얼굴형을 선택해주세요');
     }

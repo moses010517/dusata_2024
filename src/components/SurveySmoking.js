@@ -1,20 +1,21 @@
-// src/components/SurveySmoking.js
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { SurveyContext } from './SurveyContext';
 import './SurveySmoking.css';
 
 const SurveySmoking = () => {
   const navigate = useNavigate();
   const [selectedOption, setSelectedOption] = useState(null);
+  const { surveyData, setSurveyData } = useContext(SurveyContext);
 
   const handleNextClick = () => {
-    if (selectedOption) {
-      navigate('/survey-face'); // 다음 페이지 경로로 변경
+    if (selectedOption !== null) {
+      setSurveyData({ ...surveyData, smoke: selectedOption === 'yes' });
+      navigate('/survey-face');
     } else {
       alert('흡연여부를 선택해주세요');
     }
   };
-  
 
   const handleOptionClick = (option) => {
     setSelectedOption(option);

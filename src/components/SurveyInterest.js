@@ -39,7 +39,8 @@ const SurveyInterest = () => {
     if (selectedInterests.length === 0) {
       alert('관심사를 최소 하나 선택해주세요.');
     } else {
-      setSurveyData({ ...surveyData, interests: selectedInterests });
+      const selectedLabels = selectedInterests.map(id => interests.find(interest => interest.id === id).label);
+      setSurveyData({ ...surveyData, hobby: selectedLabels });
       navigate('/survey-mbti');
     }
   };

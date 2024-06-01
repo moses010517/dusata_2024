@@ -4,7 +4,7 @@ import { SurveyContext } from './SurveyContext';
 import './SurveyLogin.css';
 
 const SurveyLogin = () => {
-  const [phone, setPhone] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
   const [code, setCode] = useState('');
   const { setSurveyData } = useContext(SurveyContext);
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ const SurveyLogin = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ phone_number: phone }), // phone_number로 변경
+        body: JSON.stringify({ phone_number: phoneNumber }),
       });
 
       if (response.ok) {
@@ -31,17 +31,17 @@ const SurveyLogin = () => {
 
   const handleVerifyCode = async () => {
     try {
-      const response = await fetch('http://127.0.0.1:8000/auth/phone-check', { // 변경된 백엔드 주소로 설정
+      const response = await fetch('http://127.0.0.1:8000/auth/phone-check', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ phone_number: phone, verification_code: code }), // phone_number와 verification_code로 변경
+        body: JSON.stringify({ phone_number: phoneNumber, verification_code: code }),
       });
 
       if (response.ok) {
         alert('인증번호가 확인되었습니다.');
-        setSurveyData(prev => ({ ...prev, phone }));
+        setSurveyData(prev => ({ ...prev, phone_number: phoneNumber }));
         navigate('/survey-name');
       } else {
         alert('인증번호 확인에 실패했습니다.');
@@ -59,8 +59,8 @@ const SurveyLogin = () => {
         <input
           type="text"
           placeholder="전화번호를 입력하세요"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
+          value={phoneNumber}
+          onChange={(e) => setPhoneNumber(e.target.value)}
         />
       </div>
       <button className="send-code-button" onClick={handleSendCode}>인증번호 전송</button>
