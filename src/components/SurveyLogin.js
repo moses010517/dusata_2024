@@ -41,8 +41,29 @@ const SurveyLogin = () => {
 
       if (response.ok) {
         alert('인증번호가 확인되었습니다.');
-        setSurveyData(prev => ({ ...prev, phone_number: phoneNumber }));
-        navigate('/survey-name');
+
+        // 이미 등록된 사용자인지 확인
+        const userResponse = await fetch('http://127.0.0.1:8000/user/register/check', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ phone_number: phoneNumber }),
+        });
+
+        if (userResponse.ok) {
+          const userData = await userResponse.json();
+          if (userData.is_registered) {
+            // 이미 등록된 사용자
+            navigate('/match-screen');
+          } else {
+            // 새로운 사용자
+            setSurveyData(prev => ({ ...prev, phone_number: phoneNumber }));
+            navigate('/survey-name');
+          }
+        } else {
+          alert('사용자 확인에 실패했습니다.');
+        }
       } else {
         alert('인증번호 확인에 실패했습니다.');
       }

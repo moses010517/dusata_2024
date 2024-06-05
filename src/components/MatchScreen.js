@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import './MatchScreen.css';
 
 const MatchScreen = () => {
@@ -7,76 +8,18 @@ const MatchScreen = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        // 4개의 가짜 데이터 설정
-        const fakeData = [
-            {
-                phone_number: "01012345678",
-                user_name: "홍길동",
-                user_kakao: "hong_gildong",
-                major: "Computer Science",
-                student_number: 20200101,
-                gender: "male",
-                hobby: "독서",
-                mbti: "INTJ",
-                smoke: false,
-                animal: "강아지상",
-                introduce: "안녕하세요, 홍길동입니다."
-            },
-            {
-                phone_number: "01087654321",
-                user_name: "김철수",
-                user_kakao: "kim_cheolsu",
-                major: "Mechanical Engineering",
-                student_number: 20210101,
-                gender: "male",
-                hobby: "운동",
-                mbti: "ENTP",
-                smoke: true,
-                animal: "고양이상",
-                introduce: "반갑습니다, 김철수입니다."
-            },
-            {
-                phone_number: "01011223344",
-                user_name: "이영희",
-                user_kakao: "lee_younghee",
-                major: "Electrical Engineering",
-                student_number: 20220101,
-                gender: "female",
-                hobby: "요리",
-                mbti: "ISFJ",
-                smoke: false,
-                animal: "여우상",
-                introduce: "안녕하세요, 이영희입니다."
-            },
-            {
-                phone_number: "01055667788",
-                user_name: "박지수",
-                user_kakao: "park_jisoo",
-                major: "Civil Engineering",
-                student_number: 20230101,
-                gender: "female",
-                hobby: "음악 감상",
-                mbti: "INFJ",
-                smoke: false,
-                animal: "곰상",
-                introduce: "안녕하세요, 박지수입니다."
-            }
-        ];
-
-        // 가짜 데이터를 상태로 설정
-        setUserInfos(fakeData);
-
-        /*
-        // 백엔드 API 호출
-        axios.get('/api/user-infos') // 백엔드 엔드포인트를 '/api/user-infos'로 가정
-            .then(response => {
+        // 백엔드에서 데이터를 가져오는 함수
+        const fetchUserInfos = async () => {
+            try {
+                const response = await axios.get('/api/matching/list'); // 백엔드 엔드포인트 '/api/matching/list'로 호출
                 const data = response.data;
                 setUserInfos(data);
-            })
-            .catch(error => {
+            } catch (error) {
                 console.error('Error fetching user infos:', error);
-            });
-        */
+            }
+        };
+
+        fetchUserInfos();
     }, []);
 
     const handleCancelClick = () => {
@@ -88,7 +31,7 @@ const MatchScreen = () => {
     };
 
     if (userInfos.length === 0) {
-        return <div>Loading...</div>; // 데이터를 로드하는 동안 표시되는 로딩 상태
+        return <div>Loading... 아직 매칭인원이 부족해요 나중에 다시 로그인해주세요!</div>; // 데이터를 로드하는 동안 표시되는 로딩 상태
     }
 
     // animal에 따른 이미지 매핑
