@@ -40,6 +40,8 @@ const SurveyLogin = () => {
       });
 
       if (response.ok) {
+        const data = await response.json();
+        localStorage.setItem('token', data.auth_token); // 인증 토큰 저장
         alert('인증번호가 확인되었습니다.');
 
         // 이미 등록된 사용자인지 확인
@@ -47,6 +49,7 @@ const SurveyLogin = () => {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
+            'Authorization': `Bearer ${data.auth_token}` // 인증 토큰 추가
           },
           body: JSON.stringify({ phone_number: phoneNumber }),
         });

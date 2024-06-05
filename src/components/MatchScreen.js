@@ -8,10 +8,14 @@ const MatchScreen = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        // 백엔드에서 데이터를 가져오는 함수
         const fetchUserInfos = async () => {
+            const token = localStorage.getItem('token'); // 인증 토큰을 로컬 저장소에서 가져옴
             try {
-                const response = await axios.get('/api/matching/list'); // 백엔드 엔드포인트 '/api/matching/list'로 호출
+                const response = await axios.get('http://127.0.0.1:8000/matching/list', {
+                    headers: {
+                        Authorization: `Bearer ${token}` // 요청 헤더에 인증 토큰 포함
+                    }
+                });
                 const data = response.data;
                 setUserInfos(data);
             } catch (error) {
@@ -23,18 +27,18 @@ const MatchScreen = () => {
     }, []);
 
     const handleCancelClick = () => {
-        navigate('/'); // 홈 화면으로 이동하도록 설정
+        navigate('/'); // 홈 화면으로 이동
     };
 
     const handleMatchItemClick = (userInfo) => {
-        navigate('/match-detail', { state: { userInfo } }); // 선택된 정보를 state로 전달
+        console.log('MatchScreen userInfo:', userInfo); // userInfo 객체 구조를 확인
+        navigate('/match-detail', { state: { userInfo } }); // 상세 페이지로 이동
     };
 
     if (userInfos.length === 0) {
-        return <div>Loading... 아직 매칭인원이 부족해요 나중에 다시 로그인해주세요!</div>; // 데이터를 로드하는 동안 표시되는 로딩 상태
+        return <div>Loading... 아직 매칭인원이 부족해요 나중에 다시 로그인해주세요!</div>; // 로딩 상태 표시
     }
 
-    // animal에 따른 이미지 매핑
     const animalImages = {
         "강아지상": '/images/match/f1_dog.png',
         "고양이상": '/images/match/f2_cat.png',

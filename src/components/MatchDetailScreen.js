@@ -6,6 +6,9 @@ const MatchDetailScreen = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { userInfo } = location.state; // 이전 페이지에서 전달된 userInfo를 가져옴
+
+  console.log('MatchDetailScreen userInfo:', userInfo); // userInfo 객체 구조를 확인
+
   const [showPopup, setShowPopup] = useState(false);
 
   const handleBackClick = () => {
@@ -61,9 +64,8 @@ const MatchDetailScreen = () => {
         <div className="popup-overlay">
           <div className="popup">
             <h2>매칭 정보</h2>
-            <p>카카오톡 ID:<span class="highlight"> {userInfo.user_kakao}</span> <br />
-            매칭이 완료되었습니다. <br />
-            연락을 통해 좋은 인연을 만들어보세요.<br /><br />
+            <p>카카오톡 ID:<span className="highlight"> {userInfo.user_kakao}</span><br />이름: {userInfo.user_name} <br /><br />
+            매칭이 완료되었습니다. <br /><br />
             메모지와 회원정보는 일주일 이후 
             자동으로 삭제됩니다.<br />
             문의: dusata@gmail.com
