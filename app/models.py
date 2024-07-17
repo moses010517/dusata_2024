@@ -20,24 +20,6 @@ class GenderEnum(str, enum.Enum):
     female = "female"
 
 
-class HobbyEnum(str, enum.Enum):
-    reading = "독서"
-    cooking = "요리"
-    exercise = "운동"
-    travel = "여행"
-    photography = "사진 찍기"
-    music = "음악 감상"
-    movies = "영화 감상"
-    drawing = "그림 그리기"
-    dance = "댄스"
-    hiking = "등산"
-    swimming = "수영"
-    yoga = "요가"
-    art = "미술"
-    gaming = "게임"
-    fishing = "낚시"
-
-
 class MbtiEnum(str, enum.Enum):
     ISTJ = "ISTJ"
     ISFJ = "ISFJ"
@@ -68,6 +50,13 @@ class AnimalEnum(str, enum.Enum):
     hedgehog = "고슴도치상"
 
 
+class MatchingStatusEnum(str, enum.Enum):
+    none = "none"
+    waiting = "waiting"
+    accept = "accept"
+    reject = "reject"
+
+
 class User(Base):
     __tablename__ = "users"
 
@@ -78,26 +67,7 @@ class User(Base):
     major = Column(String(50))
     student_number = Column(Integer)
     gender = Column(Enum("male", "female", name="gender"))
-    hobby = Column(
-        Enum(
-            "독서",
-            "요리",
-            "운동",
-            "여행",
-            "사진 찍기",
-            "음악 감상",
-            "영화 감상",
-            "그림 그리기",
-            "댄스",
-            "등산",
-            "수영",
-            "요가",
-            "미술",
-            "게임",
-            "낚시",
-            name="hobby",
-        )
-    )
+    hobby = Column(String(255))  # ENUM -> VARCHAR로 변경
     mbti = Column(
         Enum(
             "ISTJ",
@@ -134,6 +104,7 @@ class User(Base):
         )
     )
     introduce = Column(String(200))
+    matching_status = Column(Enum(MatchingStatusEnum), default=MatchingStatusEnum.none)
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     deleted_at = Column(DateTime, nullable=True)
